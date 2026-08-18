@@ -12,7 +12,7 @@ private:
 public:
      // Constructor
      Alumno(string nombre, int edad, double nota1, double nota2, double nota3)
-     : nombre(nombre), nota1(nota1), nota2(nota2), nota3(nota3) {}
+     : nombre(nombre), nota1(nota1), nota2(nota2), nota3(nota3), edad(edad){}
      // Getters
      string getNombre() const { return nombre; }
      int getEdad() const { return edad; }
@@ -21,6 +21,45 @@ public:
      double getNota3() const { return nota3; }
      // Método para calcular el promedio
      double calcularPromedio() const { return (nota1 + nota2 + nota3)/ 3; }
+     string aprobado() const {
+        if(calcularPromedio()>=7)
+        {
+            return "aprobado";
+        }
+        else
+        {
+            return "desaprobado";
+        }
+     }
+     double alta() const {
+        if(nota1 > nota2 && nota1 > nota3)
+        {
+            return nota1;
+        }
+        else if(nota2 > nota1 && nota2 > nota3)
+        {
+            return nota2;
+        }
+        else if(nota3 > nota1 && nota3 > nota2)
+        {
+            return nota3;
+        }
+        
+    }
+     double baja() const {
+        if(nota1 < nota2 && nota1 < nota3)
+        {
+            return nota1;
+        }
+        else if(nota2 < nota1 && nota2 < nota3)
+        {
+            return nota2;
+        }
+        else if(nota3 < nota1 && nota3 < nota2)
+        {
+            return nota3;
+        }
+     }
 };
 int main() {
  // Vector para almacenar los alumnos
@@ -55,13 +94,9 @@ int main() {
      cout << "Nota 2: " << alumno.getNota2() << endl;
      cout << "Nota 3: " << alumno.getNota3() << endl;
      cout << "Promedio: " << alumno.calcularPromedio() << endl;
-     if(alumno.calcularPromedio()>=7)
-     {
-        cout << "El alumno esta aprobado" << endl;
-     }
-     else{
-        cout << "El alumno esta desaprobado" << endl;
-     }
+     cout << "Este alumno esta " << alumno.aprobado() << endl;
+     cout << "La nota mas alta de este alumno es de: " << alumno.alta() << endl;
+     cout << "La nota mas baja de este alumno es de: " << alumno.baja() << endl;
      cout << endl;
      suma_total = suma_total + alumno.calcularPromedio();
  }
