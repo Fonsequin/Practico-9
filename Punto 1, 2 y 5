@@ -30,6 +30,7 @@ int main() {
  int edad;
  double nota1, nota2, nota3;
  int numAlumnos;
+ float suma_total = 0;
  cout << "Ingrese el número de alumnos: ";
  cin >> numAlumnos;
  for (int i = 0; i < numAlumnos; i++) {
@@ -54,7 +55,17 @@ int main() {
      cout << "Nota 2: " << alumno.getNota2() << endl;
      cout << "Nota 3: " << alumno.getNota3() << endl;
      cout << "Promedio: " << alumno.calcularPromedio() << endl;
+     if(alumno.calcularPromedio()>=7)
+     {
+        cout << "El alumno esta aprobado" << endl;
+     }
+     else{
+        cout << "El alumno esta desaprobado" << endl;
+     }
      cout << endl;
+     suma_total = suma_total + alumno.calcularPromedio();
  }
+ float promedio_total = suma_total / numAlumnos;
+ cout << "El promedio total de los alumnos es de: " << promedio_total;
  return 0;
 }
